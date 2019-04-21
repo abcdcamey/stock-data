@@ -1,5 +1,15 @@
 # stock-data
 this is the repository for get stock data
+
+### update in 2019-04-21
+
+```
+1、完成了mysql数据库的搭建
+2、完成了dim表和部分fact表的创建
+3、完成了dim表和部分fact表数据的写入，区分每日调用和一次性调用历史所有数据
+```
+
+
 ### update in 2019-04-14
 
 ```
