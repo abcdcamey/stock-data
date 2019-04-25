@@ -1,4 +1,5 @@
 from api.common.TuShare_Api_Connect import TuShare_Api_Connect
+from api.common.Logs import Logger_process, Logger_process_error
 
 class Dim_Data_Api:
 
@@ -16,6 +17,8 @@ class Dim_Data_Api:
         :return:
         '''
         data = self._api_connect.query('stock_basic', is_hs=_is_hs, list_status=_list_status, exchange=_exchange, fields=_fields)
+        Logger_process.log("call stock basic api,get data length:%s" %(str(len(data))))
+        print("call stock basic api,get data length:%s" %(str(len(data))))
         return data
 
     def get_exchange_trade_cal(self, _exchange='', _start_date='',_end_date='', _is_open=None,
@@ -30,6 +33,8 @@ class Dim_Data_Api:
         '''
         data = self._api_connect.query('trade_cal', exchange = _exchange, start_date=_start_date, end_date=_end_date, is_open=_is_open,
                                        fields=_fields)
+        Logger_process.log("call trade_cal api,get data length:%s" % (str(len(data))))
+        print("call trade_cal api,get data length:%s" % (str(len(data))))
         return data
 
     def get_hs_const_list(self, _hs_type='SH', _is_new='',
@@ -42,6 +47,8 @@ class Dim_Data_Api:
         '''
         data = self._api_connect.query('hs_const', hs_type = _hs_type, is_new=_is_new,
                                        fields=_fields)
+        Logger_process.log("call hs_const api,get data length:%s" % (str(len(data))))
+        print("call hs_const api,get data length:%s" % (str(len(data))))
         return data
 
     def get_stock_name_change(self,_ts_code = '',_start_date = '',_end_date = '',
@@ -55,6 +62,9 @@ class Dim_Data_Api:
         '''
         data = self._api_connect.query('namechange', ts_code=_ts_code, start_date=_start_date, end_date=_end_date,
                                        fields=_fields)
+
+        Logger_process.log("call namechange api,get data length:%s" % (str(len(data))))
+        print("call namechange api,get data length:%s" % (str(len(data))))
         return data
 
     def get_stock_company_basic_info(self, _exchange='',
@@ -67,6 +77,8 @@ class Dim_Data_Api:
         '''
         data = self._api_connect.query('stock_company', exchange=_exchange,
                                        fields=_fields)
+        Logger_process.log("call stock_company api,get data length:%s" % (str(len(data))))
+        print("call stock_company api,get data length:%s" % (str(len(data))))
         return data
 
     def get_new_share_list(self, _start_date='', _end_date='',
@@ -80,6 +92,8 @@ class Dim_Data_Api:
         '''
         data = self._api_connect.query('new_share', start_date=_start_date,end_date=_end_date,
                                        fields=_fields)
+        Logger_process.log("call new_share api,get data length:%s" % (str(len(data))))
+        print("call new_share api,get data length:%s" % (str(len(data))))
         return data
 
 

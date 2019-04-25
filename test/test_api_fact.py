@@ -3,8 +3,8 @@ from api.common.Saver import Saver
 dda = Fact_Market_Stock_Data()
 
 
-#data = dda.get_fact_market_stock_daily(_trade_date='20190401')
-#Saver.save_to_mysql(data,'fact_market_stock_daily')
+data = dda.get_fact_market_stock_daily(_trade_date='20190401')
+Saver.save_to_mysql(data,'fact_market_stock_daily')
 
 
 
@@ -35,5 +35,5 @@ dda = Fact_Market_Stock_Data()
 #Saver.save_to_mysql(data8,'fact_market_stock_daily_basic')
 
 
-data9 = dda.get_fact_adj_factor(_trade_date='20190410')
-Saver.save_to_mysql(data9,'fact_adj_factor')
+#data9 = dda.get_fact_adj_factor(_trade_date='20190410')
+#Saver.save_to_mysql(data9,'fact_adj_factor')

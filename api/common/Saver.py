@@ -3,15 +3,22 @@ import approot
 from .MysqlDB import mysql_conn,cp
 from datetime import datetime
 import numpy as np
+from .Logs import Logger_process, Logger_process_error
+
 class Saver:
 
-    def save_to_xlsx(df_data, _path = os.path.join(approot.get_root(),'data'), _file_name = 'file'):
+    def save_to_xlsx(df_data, _path = os.path.join(approot.get_root(), 'data'), _file_name = 'file'):
         df_data.to_excel(os.path.join(_path, _file_name))
 
     def save_to_mysql(_df, table_name = ''):
+
         if _df is None or len(_df)==0:
+            Logger_process.log("save to mysql,but data is None")
+            print("save to mysql,but data is None")
             return
         try:
+            Logger_process.log("save to mysql,table name:%s,length:%s" % (table_name, len(_df)))
+            print("save to mysql,table name:%s,length:%s" % (table_name , str(len(_df))))
             curs = mysql_conn.cursor()
             sql = cp.get('sql', 'sql_insert')
             table_columns_list = _df.columns.values.tolist() + ['update_dt']
@@ -35,7 +42,6 @@ class Saver:
                 value_list = value_list + value + ','
             value_list = value_list[:len(value_list) - 1]
             sql_replaced = sql % (table_name, table_columns_str,value_list)
-            print(sql_replaced)
             curs.execute(sql_replaced)
             mysql_conn.commit()
         except():
