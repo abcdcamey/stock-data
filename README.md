@@ -1,6 +1,14 @@
 # stock-data
 this is the repository for get stock data
 
+
+### update in 2019-04-25
+
+```
+1、加入日志模块
+
+```
+
 ### update in 2019-04-21
 
 ```
