@@ -4,6 +4,8 @@ from .MysqlDB import mysql_conn,cp
 from datetime import datetime
 import numpy as np
 from .Logs import Logger_process, Logger_process_error
+import traceback
+import StringIO
 
 class Saver:
 
@@ -44,7 +46,11 @@ class Saver:
             sql_replaced = sql % (table_name, table_columns_str,value_list)
             curs.execute(sql_replaced)
             mysql_conn.commit()
-        except():
+        except :
+            fp = StringIO.StringIO()
+            traceback.print_exc(file=fp)
+            message = fp.getvalue()
+            Logger_process_error.log(message)
             mysql_conn.rollback()
         finally:
             pass

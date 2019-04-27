@@ -1,0 +1,5 @@
+2019-04-25 21:54:07,362 INFO Logs.py 31 98894 call fact_market_stock_daily api,get data length:3569
+2019-04-25 21:54:45,373 INFO Logs.py 31 98914 call fact_market_stock_daily api,get data length:3569
+2019-04-25 21:54:45,373 INFO Logs.py 31 98914 save to mysql,table name:fact_market_stock_daily,length:3569
+2019-04-25 22:11:39,569 INFO call fact_market_stock_daily api,get data length:3569
+2019-04-25 22:11:39,569 INFO save to mysql,table name:fact_market_stock_daily,length:3569
