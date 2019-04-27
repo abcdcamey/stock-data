@@ -5,7 +5,7 @@ from datetime import datetime
 import numpy as np
 from .Logs import Logger_process, Logger_process_error
 import traceback
-import StringIO
+from io import StringIO
 
 class Saver:
 
