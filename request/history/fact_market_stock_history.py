@@ -1,3 +1,7 @@
+import sys
+import approot
+sys.path.append(approot.get_root())
+
 from api.fact.Fact_Market_Stock_Data import Fact_Market_Stock_Data
 from api.common.Saver import Saver
 from datetime import datetime,timedelta
