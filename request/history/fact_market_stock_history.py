@@ -1,6 +1,6 @@
 import sys
 import os
-sys.path.append(os.path.join(os.path.abspath(__file__), "../.."))
+sys.path.append(os.path.dirname(os.path.join(os.path.abspath(__file__)), "../../"))
 print(sys.path)
 from api.fact.Fact_Market_Stock_Data import Fact_Market_Stock_Data
 from api.common.Saver import Saver
