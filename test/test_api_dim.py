@@ -18,10 +18,10 @@ dda = Dim_Data_Api()
 #Saver.save_to_xlsx(data3, _file_name='stock_company_basic_info.xlsx')
 #Saver.save_to_mysql(data3, 'stock_company_basic_info')
 
-data4 = dda.get_new_share_list()
+#data4 = dda.get_new_share_list()
 #Saver.save_to_xlsx(data4, _file_name='new_share_list.xlsx')
-Saver.save_to_mysql(data4, 'new_share_list')
+#Saver.save_to_mysql(data4, 'new_share_list')
 
 data5 = dda.get_stock_name_change()
 #Saver.save_to_xlsx(data5, _file_name='stock_name_change.xlsx')
-Saver.save_to_mysql(data5, 'stock_name_change')
+#Saver.save_to_mysql(data5, 'stock_name_change')

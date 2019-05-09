@@ -36,48 +36,40 @@ class Fact_Market_Ref_Data:
         Logger_process.log("call get_fact_margin_detail api,get data length:%s" % (len(data)))
         return data
 
-
     def get_fact_top10_holders(self,_ts_code='',_period='',_ann_date='',_start_date='',_end_date=''):
         data = self._api_connect.query('top10_holders',ts_code=_ts_code, period=_period, ann_date=_ann_date, start_date=_start_date, end_date=_end_date)
         Logger_process.log("call get_fact_top10_holders api,get data length:%s" % (len(data)))
         return data
-
 
     def get_fact_top10_floatholders(self,_ts_code='',_period='',_ann_date='',_start_date='',_end_date=''):
         data = self._api_connect.query('top10_floatholders',ts_code=_ts_code, period=_period, ann_date=_ann_date, start_date=_start_date, end_date=_end_date)
         Logger_process.log("call get_fact_top10_floatholders api,get data length:%s" % (len(data)))
         return data
 
-
     def get_fact_stock_daily_top_list(self,_ts_code='',_trade_date=''):
         data = self._api_connect.query('top_list', ts_code=_ts_code, trade_date=_trade_date)
         Logger_process.log("call get_fact_stock_daily_top_list api,get data length:%s" % (len(data)))
         return data
-
 
     def get_fact_stock_pledge_stat(self,_ts_code=''):
         data = self._api_connect.query('pledge_stat', ts_code=_ts_code)
         Logger_process.log("call get_fact_stock_pledge_stat api,get data length:%s" % (len(data)))
         return data
 
-
     def get_fact_stock_pledge_detail(self,_ts_code=''):
         data = self._api_connect.query('pledge_detail', ts_code=_ts_code)
         Logger_process.log("call get_fact_stock_pledge_detail api,get data length:%s" % (len(data)))
         return data
-
 
     def get_fact_stock_repurchase(self, _ann_date='',_start_date='',_end_date=''):
         data = self._api_connect.query('repurchase', ann_date=_ann_date,start_date=_start_date,end_date=_end_date)
         Logger_process.log("call get_fact_stock_repurchase api,get data length:%s" % (len(data)))
         return data
 
-
     def get_fact_stock_concept(self, _src='ts'):
         data = self._api_connect.query('concept',src=_src)
         Logger_process.log("call get_fact_stock_concept api,get data length:%s" % (len(data)))
         return data
-
 
     def get_fact_stock_concept_detail(self, _id='',_ts_code=''):
         data = self._api_connect.query('concept_detail',id=_id,ts_code=_id)
@@ -108,3 +100,4 @@ class Fact_Market_Ref_Data:
         data = self._api_connect.query('stk_holdertrade',ts_code=_ts_code,ann_date=_ann_date, start_date=_start_date, end_date=_end_date, trade_type=_trade_type, holder_type=_holder_type)
         Logger_process.log("call get_fact_stock_stk_holdertrade api,get data length:%s" % (len(data)))
         return data
+

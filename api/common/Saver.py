@@ -12,13 +12,22 @@ class Saver:
     def save_to_xlsx(df_data, _path = os.path.join(approot.get_root(), 'data'), _file_name = 'file'):
         df_data.to_excel(os.path.join(_path, _file_name))
 
-    def save_to_mysql(_df, table_name = ''):
+    def save_to_mysql(_df, table_name = '',delete_all = False):
+
+        if delete_all == True:
+            Logger_process.log("delete mysql,tabel name:%s" % (table_name))
+            sql = cp.get('sql', 'sql_delete')
+            sql_replaced = sql % (table_name)
+            curs = mysql_conn.cursor()
+            curs.execute(sql_replaced)
+            mysql_conn.commit()
 
         if _df is None or len(_df)==0:
             Logger_process.log("save to mysql,but data is None")
             print("save to mysql,but data is None")
             return
         try:
+
             Logger_process.log("save to mysql,table name:%s,length:%s" % (table_name, len(_df)))
             print("save to mysql,table name:%s,length:%s" % (table_name , str(len(_df))))
             curs = mysql_conn.cursor()
@@ -47,7 +56,7 @@ class Saver:
             curs.execute(sql_replaced)
             mysql_conn.commit()
         except :
-            fp = StringIO.StringIO()
+            fp = StringIO()
             traceback.print_exc(file=fp)
             message = fp.getvalue()
             Logger_process_error.log(message)
