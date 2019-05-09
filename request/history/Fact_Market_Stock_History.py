@@ -33,9 +33,9 @@ def cal_history_func(_date_str):
     Saver.save_to_mysql(dda.get_fact_adj_factor(_trade_date=_date_str),
                         'fact_adj_factor')
 
-for i in range(10):
+for i in range(7300):
     cur_date = datetime.now()+timedelta(days=-i)
-    date_str = "%s%02d%s" % (cur_date.year, cur_date.month, cur_date.day)
+    date_str = "%s%02d%02d" % (cur_date.year, cur_date.month, cur_date.day)
     cal_history_func(date_str)
 
 

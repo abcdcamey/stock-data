@@ -31,7 +31,7 @@ def cal_date_func(_date_str):
 
 
 cur_date = datetime.now()+timedelta(days=0)
-date_str = "%s%02d%s" % (cur_date.year,cur_date.month,cur_date.day)
+date_str = "%s%02d%02d" % (cur_date.year,cur_date.month,cur_date.day)
 cal_date_func(date_str)
 
 
