@@ -61,6 +61,7 @@ class Saver:
             message = fp.getvalue()
             Logger_process_error.log(message)
             mysql_conn.rollback()
+            raise
         finally:
             pass
             #mysql_conn.close()
