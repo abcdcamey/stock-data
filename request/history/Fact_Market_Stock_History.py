@@ -11,6 +11,7 @@ dda = Fact_Market_Stock_Data()
 
 def cal_history_func(_date_str):
     Logger_process.log('call Fact_Market_Stock_History,'+_date_str)
+    print('call Fact_Market_Stock_History,'+_date_str)
     Saver.save_to_mysql(dda.get_fact_market_stock_daily(_trade_date=_date_str),
                         'fact_market_stock_daily')
 
@@ -32,7 +33,7 @@ def cal_history_func(_date_str):
     Saver.save_to_mysql(dda.get_fact_adj_factor(_trade_date=_date_str),
                         'fact_adj_factor')
 
-for i in range(365):
+for i in range(10):
     cur_date = datetime.now()+timedelta(days=-i)
     date_str = "%s%02d%s" % (cur_date.year, cur_date.month, cur_date.day)
     cal_history_func(date_str)
