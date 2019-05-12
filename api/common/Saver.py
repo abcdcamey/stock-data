@@ -44,7 +44,7 @@ class Saver:
             for i in range(len(_df)):
                 value = '('
                 for j in range(len(table_columns_list)-1):
-                    v = "" if _df.iloc[i, :].get(table_columns_list[j]) is None else _df.iloc[i, :].get(table_columns_list[j])
+                    v = '' if _df.iloc[i, :].get(table_columns_list[j]) is None else _df.iloc[i, :].get(table_columns_list[j])
                     if type(v)==str:
                         v = v.replace('"',"'")
                         value = value + '"' + v + '",'
