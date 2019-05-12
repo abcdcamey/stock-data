@@ -1,6 +1,12 @@
 # stock-data
 this is the repository for get stock data
 
+### update in 2019-05-12
+
+```
+完成市场参考数据和指数数据
+
+```
 
 ### update in 2019-04-25
 
