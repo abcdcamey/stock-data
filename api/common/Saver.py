@@ -56,7 +56,7 @@ class Saver:
                 value_list = value_list + value + ','
             value_list = value_list[:len(value_list) - 1]
             sql_replaced = sql % (table_name, table_columns_str,value_list)
-            Logger_process.log("------sql-------:"+sql_replaced)
+            #Logger_process.log("------sql-------:"+sql_replaced)
             curs.execute(sql_replaced)
             mysql_conn.commit()
         except :
