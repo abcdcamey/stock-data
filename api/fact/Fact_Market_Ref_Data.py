@@ -51,6 +51,11 @@ class Fact_Market_Ref_Data:
         Logger_process.log("call get_fact_stock_daily_top_list api,get data length:%s" % (len(data)))
         return data
 
+    def get_fact_stock_daily_top_inst(self, _ts_code='', _trade_date=''):
+        data = self._api_connect.query('top_inst', ts_code=_ts_code, trade_date=_trade_date)
+        Logger_process.log("call get_fact_stock_daily_top_inst api,get data length:%s" % (len(data)))
+        return data
+
     def get_fact_stock_pledge_stat(self,_ts_code=''):
         data = self._api_connect.query('pledge_stat', ts_code=_ts_code)
         Logger_process.log("call get_fact_stock_pledge_stat api,get data length:%s" % (len(data)))
@@ -72,7 +77,7 @@ class Fact_Market_Ref_Data:
         return data
 
     def get_fact_stock_concept_detail(self, _id='',_ts_code=''):
-        data = self._api_connect.query('concept_detail',id=_id,ts_code=_id)
+        data = self._api_connect.query('concept_detail',id=_id,ts_code=_ts_code)
         Logger_process.log("call get_fact_stock_concept_detail api,get data length:%s" % (len(data)))
         return data
 

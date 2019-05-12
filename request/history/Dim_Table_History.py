@@ -15,6 +15,7 @@ Saver.save_to_mysql(dda.get_stock_company_basic_info(), 'stock_company_basic_inf
 
 Saver.save_to_mysql(dda.get_stock_name_change(), 'stock_name_change',delete_all=True)
 
+# 限制10000条
 Saver.save_to_mysql(dda.get_new_share_list(_start_date='19900101',_end_date='20091231'), 'new_share_list',delete_all=True)
 
 Saver.save_to_mysql(dda.get_new_share_list(_start_date='20100101',_end_date='20201231'), 'new_share_list')

@@ -16,6 +16,7 @@ def cal_date_func(_start_date_str,_end_date_str):
 
     Saver.save_to_mysql(dda.get_stock_name_change(), 'stock_name_change', delete_all=True)
 
+    # 限制10000条
     Saver.save_to_mysql(dda.get_new_share_list(_start_date=_start_date_str), 'new_share_list')
 
 
