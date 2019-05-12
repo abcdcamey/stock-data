@@ -79,16 +79,16 @@ def cal_history_func_stock(_ts_code):
 
 
 
-'''
+
 # 不用跑历史数据，每天更新即可
 data = fmrd.get_fact_stock_concept()
 Saver.save_to_mysql(data, 'fact_stock_concept', delete_all=True)
 
-for i in range(0,10):
+for i in range(0,7300):
     cur_date = datetime.now()+timedelta(days=-i)
     date_str = "%s%02d%02d" % (cur_date.year, cur_date.month, cur_date.day)
     cal_history_func_date(date_str)
-'''
+
 
 
 

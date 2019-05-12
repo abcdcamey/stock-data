@@ -34,7 +34,7 @@ for _market in ['MSCI','CSI','SSE','SZSE','CICC','SW']:
     Saver.save_to_mysql(data, 'fact_market_index_basic')
 
 
-for i in range(0,10):
+for i in range(0,7300):
     cur_date = datetime.now()+timedelta(days=-i)
     date_str = "%s%02d%02d" % (cur_date.year, cur_date.month, cur_date.day)
     for _ts_code in ts_code_list:
