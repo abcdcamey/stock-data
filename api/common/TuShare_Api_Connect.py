@@ -1,3 +1,4 @@
+#coding=utf-8
 import tushare as ts
 class TuShare_Api_Connect:
 

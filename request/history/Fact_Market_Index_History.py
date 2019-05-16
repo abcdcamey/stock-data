@@ -20,8 +20,8 @@ def cal_history_func_date(_date_str,_ts_code):
     data = fmid.get_fact_market_index_daily(_ts_code=_ts_code , _trade_date=_date_str)
     Saver.save_to_mysql(data,'fact_market_index_daily')
 
-    data = fmid.get_fact_market_index_weight(_index_code=_ts_code, _start_date=_date_str)
-    Saver.save_to_mysql(data,'fact_market_index_weight')
+    #data = fmid.get_fact_market_index_weight(_index_code=_ts_code, _start_date=_date_str)
+    #Saver.save_to_mysql(data,'fact_market_index_weight')
 
     data = fmid.get_fact_market_index_dailybasic(_ts_code=_ts_code, _trade_date=_date_str)
     Saver.save_to_mysql(data, 'fact_market_index_dailybasic')
