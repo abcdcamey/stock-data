@@ -56,7 +56,7 @@ def cal_func_stock_date(_ts_code,_start_date,_end_date):
     # 每次100条，每支股3年取一次
     data = fmrd.get_fact_top10_floatholders(_ts_code=_ts_code,_start_date=_start_date,_end_date=_end_date)
     Saver.save_to_mysql(data, 'fact_stock_top10_floatholders')
-    time.sleep(1)
+    time.sleep(0.2)
 
 def cal_func_stock(_ts_code):
     Logger_process.log('call Fact_Market_Ref_Daily by stock,' + _ts_code)
@@ -74,7 +74,7 @@ def cal_func_stock(_ts_code):
     # 用_ts_code跑历史数据，之后加_ann_date跑每天数据
     data = fmrd.get_fact_stock_stk_holdernumber(_ts_code=_ts_code,)
     Saver.save_to_mysql(data, table_name='fact_stock_stk_holdernumber')
-    time.sleep(1)
+    time.sleep(0.2)
 
 
 
@@ -84,7 +84,7 @@ data = fmrd.get_fact_stock_concept()
 Saver.save_to_mysql(data, 'fact_stock_concept', delete_all=True)
 
 
-cur_date = datetime.now()+timedelta(days=0)
+cur_date = datetime.now()+timedelta(days=-1)
 date_str = "%s%02d%02d" % (cur_date.year, cur_date.month, cur_date.day)
 cal_func_date(date_str)
 
@@ -96,6 +96,6 @@ df_stock_all = dda.get_stock_basic_list()
 
 for i in df_stock_all.index:
     ts_code = df_stock_all.loc[i].get('ts_code')
-    cal_func_stock(ts_code)
+    #cal_func_stock(ts_code)
     cal_func_stock_date(ts_code,date_str,date_str)
 

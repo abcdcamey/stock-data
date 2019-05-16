@@ -44,7 +44,7 @@ def cal_history_func_date(_date_str):
     # 目前只到2019年2月22号的数据
     data = fmrd.get_fact_stock_stk_account(_date =_date_str)
     Saver.save_to_mysql(data, table_name='fact_stock_stk_account')
-
+    time.sleep(0.5)
 
 def cal_history_func_stock_date(_ts_code,_start_date,_end_date):
     Logger_process.log('call Fact_Market_Ref_History by stock date ,stock:%s,_start_date:%s,_end_date:%s'%(_ts_code,_start_date,_end_date))
@@ -75,7 +75,7 @@ def cal_history_func_stock(_ts_code):
     # 用_ts_code跑历史数据，之后加_ann_date跑每天数据
     data = fmrd.get_fact_stock_stk_holdernumber(_ts_code=_ts_code,)
     Saver.save_to_mysql(data, table_name='fact_stock_stk_holdernumber')
-    time.sleep(2)
+    time.sleep(1)
 
 
 
