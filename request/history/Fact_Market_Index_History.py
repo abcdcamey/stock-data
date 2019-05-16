@@ -39,4 +39,4 @@ for i in range(0,7300):
     date_str = "%s%02d%02d" % (cur_date.year, cur_date.month, cur_date.day)
     for _ts_code in ts_code_list:
         cal_history_func_date(date_str,_ts_code)
-    time.sleep(2)
+    time.sleep(5)
