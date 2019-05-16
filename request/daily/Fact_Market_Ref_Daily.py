@@ -84,7 +84,7 @@ data = fmrd.get_fact_stock_concept()
 Saver.save_to_mysql(data, 'fact_stock_concept', delete_all=True)
 
 
-cur_date = datetime.now()+timedelta(days=-1)
+cur_date = datetime.now()+timedelta(days=-0)
 date_str = "%s%02d%02d" % (cur_date.year, cur_date.month, cur_date.day)
 cal_func_date(date_str)
 
