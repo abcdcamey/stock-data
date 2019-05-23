@@ -1,6 +1,6 @@
 import os
 import approot
-from .MysqlDB import mysql_conn,cp
+from .MysqlDB import MysqlDB,cp
 from datetime import datetime
 import numpy as np
 from .Logs import Logger_process, Logger_process_error
@@ -18,6 +18,7 @@ class Saver:
             Logger_process.log("delete mysql,tabel name:%s" % (table_name))
             sql = cp.get('sql', 'sql_delete')
             sql_replaced = sql % (table_name)
+            mysql_conn = MysqlDB.get_mysql_conn()
             curs = mysql_conn.cursor()
             curs.execute(sql_replaced)
             mysql_conn.commit()
@@ -33,6 +34,7 @@ class Saver:
 
             if column_dict is not None:
                 _df = _df.rename(columns=column_dict)
+            mysql_conn = MysqlDB.get_mysql_conn()
             curs = mysql_conn.cursor()
             sql = cp.get('sql', 'sql_insert')
             table_columns_list = _df.columns.values.tolist() + ['update_dt']
@@ -60,6 +62,7 @@ class Saver:
             curs.execute(sql_replaced)
             mysql_conn.commit()
         except :
+            mysql_conn = MysqlDB.get_mysql_conn()
             fp = StringIO()
             traceback.print_exc(file=fp)
             message = fp.getvalue()

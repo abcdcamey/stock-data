@@ -12,20 +12,20 @@ dda = Dim_Data_Api()
 fmrd = Fact_Market_Ref_Data()
 
 
-def cal_history_func_date(_date_str):
-    Logger_process.log('call Fact_Market_Ref_History by date,'+_date_str)
-    print('call Fact_Market_Ref_History by date,'+_date_str)
-    Saver.save_to_mysql(fmrd.get_fact_moneyflow_hsgt(_trade_date=_date_str),'fact_moneyflow_hsgt',delete_all=True)
+def cal_history_func_date(_date_str, i):
+    Logger_process.log('call Fact_Market_Ref_History by date,%s,%s' % (_date_str, i))
+    print('call Fact_Market_Ref_History by date,%s,%s' % (_date_str, i))
+    Saver.save_to_mysql(fmrd.get_fact_moneyflow_hsgt(_trade_date=_date_str),'fact_moneyflow_hsgt')
 
-    Saver.save_to_mysql(fmrd.get_fact_hsgt_top10(_trade_date=_date_str),'fact_hsgt_top10',delete_all=True)
+    Saver.save_to_mysql(fmrd.get_fact_hsgt_top10(_trade_date=_date_str),'fact_hsgt_top10')
 
-    Saver.save_to_mysql(fmrd.get_fact_ggt_top10(_trade_date=_date_str), 'fact_ggt_top10',delete_all=True)
+    Saver.save_to_mysql(fmrd.get_fact_ggt_top10(_trade_date=_date_str), 'fact_ggt_top10')
 
-    Saver.save_to_mysql(fmrd.get_fact_margin(_trade_date=_date_str), 'fact_margin',delete_all=True)
+    Saver.save_to_mysql(fmrd.get_fact_margin(_trade_date=_date_str), 'fact_margin')
 
-    Saver.save_to_mysql(fmrd.get_fact_margin_detail(_trade_date=_date_str), 'fact_margin_detail',delete_all=True)
+    #Saver.save_to_mysql(fmrd.get_fact_margin_detail(_trade_date=_date_str), 'fact_margin_detail')
 
-
+    '''
     data = fmrd.get_fact_stock_daily_top_list(_trade_date=_date_str)
     Saver.save_to_mysql(data, 'fact_stock_daily_top_list')
 
@@ -44,7 +44,8 @@ def cal_history_func_date(_date_str):
     # 目前只到2019年2月22号的数据
     data = fmrd.get_fact_stock_stk_account(_date =_date_str)
     Saver.save_to_mysql(data, table_name='fact_stock_stk_account')
-    time.sleep(0.5)
+    '''
+    time.sleep(5)
 
 def cal_history_func_stock_date(_ts_code,_start_date,_end_date):
     Logger_process.log('call Fact_Market_Ref_History by stock date ,stock:%s,_start_date:%s,_end_date:%s'%(_ts_code,_start_date,_end_date))
@@ -84,14 +85,13 @@ def cal_history_func_stock(_ts_code):
 data = fmrd.get_fact_stock_concept()
 Saver.save_to_mysql(data, 'fact_stock_concept', delete_all=True)
 
-for i in range(0,7300):
+for i in range(680,1405):
     cur_date = datetime.now()+timedelta(days=-i)
     date_str = "%s%02d%02d" % (cur_date.year, cur_date.month, cur_date.day)
-    cal_history_func_date(date_str)
+    cal_history_func_date(date_str,i)
 
 
-
-
+'''
 
 df_stock_all = dda.get_stock_basic_list()
 
@@ -107,3 +107,4 @@ for i in df_stock_all.index:
 
         cal_history_func_stock_date(ts_code,start_date_str,end_date_str)
 
+'''
