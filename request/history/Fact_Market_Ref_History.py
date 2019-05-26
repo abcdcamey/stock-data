@@ -76,11 +76,11 @@ def cal_history_func_stock(_ts_code):
     # 用_ts_code跑历史数据，之后加_ann_date跑每天数据
     data = fmrd.get_fact_stock_stk_holdernumber(_ts_code=_ts_code,)
     Saver.save_to_mysql(data, table_name='fact_stock_stk_holdernumber')
-    time.sleep(1)
+    time.sleep(2)
 
 
 
-
+'''
 # 不用跑历史数据，每天更新即可
 data = fmrd.get_fact_stock_concept()
 Saver.save_to_mysql(data, 'fact_stock_concept', delete_all=True)
@@ -107,4 +107,3 @@ for i in df_stock_all.index:
 
         cal_history_func_stock_date(ts_code,start_date_str,end_date_str)
 
-'''
