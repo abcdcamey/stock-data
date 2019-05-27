@@ -98,7 +98,7 @@ df_stock_all = dda.get_stock_basic_list()
 for i in df_stock_all.index:
     ts_code = df_stock_all.loc[i].get('ts_code')
     print(i,ts_code)
-    if ts_code[0:6]<'000795':
+    if ts_code[0:6]<'300717':
         continue
     cal_history_func_stock(ts_code)
     for i in range(0,10000,501):
