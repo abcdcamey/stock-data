@@ -6,12 +6,15 @@ import numpy as np
 from .Logs import Logger_process, Logger_process_error
 import traceback
 from io import StringIO
+import time
 
 class Saver:
 
+    @staticmethod
     def save_to_xlsx(df_data, _path = os.path.join(approot.get_root(), 'data'), _file_name = 'file'):
         df_data.to_excel(os.path.join(_path, _file_name))
 
+    @staticmethod
     def save_to_mysql(_df, table_name = '',delete_all = False, column_dict=None):
 
         if delete_all == True:
@@ -44,12 +47,18 @@ class Saver:
             table_columns_str = table_columns_str[:len(table_columns_str) - 1]
             value_list = ''
             for i in range(len(_df)):
+                _df_line = _df.iloc[i]
                 value = '('
+
                 for j in range(len(table_columns_list)-1):
-                    v = '' if _df.iloc[i, :].get(table_columns_list[j]) is None else _df.iloc[i, :].get(table_columns_list[j])
-                    if type(v)==str:
+                    v = '' if _df_line.get(table_columns_list[j]) is None else _df_line.get(table_columns_list[j])
+                    if isinstance(v,str):
                         v = v.replace('"',"'")
                         value = value + '"' + v + '",'
+                    elif isinstance(v,datetime):
+                        value = value + '"' + str(v) + '",'
+                    elif isinstance(v,int):
+                        value = value + str(v) + ','
                     else:
                         if np.isnan(v):
                             v = 'null'
